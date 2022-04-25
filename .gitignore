@@ -1,5 +1,6 @@
 # Python virtual environment
 virt_env/
+not_an_old_env/
 
 # database
 database.sb
