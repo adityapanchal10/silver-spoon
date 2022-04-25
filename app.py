@@ -62,7 +62,10 @@ class ScannerAPI(Resource):
             res = requests.get(url=url)
             if res.status_code == 200 or res.status_code == 302:
                 url_temp = parse.urlparse(url=url)
-                url_two = url_temp.scheme + '://' + url_temp.netloc + url_temp.path
+                if url_temp.path != '/':
+                    url_two = url_temp.scheme + '://' + url_temp.netloc + url_temp.path
+                else:
+                    url_two = url_temp.scheme + '://' + url_temp.netloc                    
                 if url_temp.query:
                     url_two = url_temp + '?' + url_temp.query
                 url_two = str(requote_uri(url_two))
